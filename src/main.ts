@@ -1,6 +1,6 @@
 import net from 'net'
 
-interface Log {
+export interface Log {
 	component?: string,
 	data?: Record<string, unknown>
 	level: 'DEBUG' | 'ERROR' | 'INFO' | 'WARN'
@@ -26,19 +26,19 @@ export class Lumberjack {
 		this.client.write( JSON.stringify( log ) )
 	}
 
-	public debug( log: Omit<Log, 'level'> ): void {
-		this.log( { ...log, level: 'DEBUG' } )
+	public debug( log: Omit<Log, 'level' | 'service'> ): void {
+		this.log( { ...log, level: 'DEBUG', service: this.service } )
 	}
 
-	public error( log: Omit<Log, 'level'> ): void {
-		this.log( { ...log, level: 'ERROR' } )
+	public error( log: Omit<Log, 'level' | 'service'> ): void {
+		this.log( { ...log, level: 'ERROR', service: this.service } )
 	}
 
-	public info( log: Omit<Log, 'level'> ): void {
-		this.log( { ...log, level: 'INFO' } )
+	public info( log: Omit<Log, 'level' | 'service'> ): void {
+		this.log( { ...log, level: 'INFO', service: this.service } )
 	}
 
-	public warn( log: Omit<Log, 'level'> ): void {
-		this.log( { ...log, level: 'WARN' } )
+	public warn( log: Omit<Log, 'level' | 'service'> ): void {
+		this.log( { ...log, level: 'WARN', service: this.service } )
 	}
 }
