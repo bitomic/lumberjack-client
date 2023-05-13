@@ -1,0 +1,41 @@
+{
+  "name": "@bitomic/lumberjack-client",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "author": "bitomic",
+  "license": "MIT",
+  "scripts": {
+    "hooks": "husky install .github/husky",
+    "build": "rimraf tsconfig.tsbuildinfo dist && yarn tsup",
+    "build:watch": "yarn tsc -w --incremental",
+    "lint": "eslint src/ --ext .ts --cache",
+    "lint:fix": "eslint src/ --fix --ext .ts --cache",
+    "start": "yarn node dist/main.js"
+  },
+  "exports": {
+    "import": "./dist/main.mjs",
+    "require": "./dist/main.js",
+    "types": "./dist/main.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "packageManager": "yarn@3.5.1",
+  "devDependencies": {
+    "@bitomic/eslint-config": "^1.2.0",
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@types/node": "^18.16.9",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
+    "eslint": "^8.40.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "rimraf": "^5.0.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
